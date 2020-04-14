@@ -66,6 +66,8 @@ const snap = getSnapPositions( scrollingElement );
 */
 ```
 
+![Diagram showing difference between function calls](.github/explain.png)
+
 ## TODO
 
 - More documentation
