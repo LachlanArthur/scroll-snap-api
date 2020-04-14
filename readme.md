@@ -35,8 +35,8 @@ const scroll = getScrollSnapPositions( scrollingElement );
 
 /*
 {
-	x: [ 0, 100, 150, 200 ],
-	y: [ 0, 200, 400, 600, 800 ],
+  x: [ 0, 100, 150, 200 ],
+  y: [ 0, 200, 400, 600, 800 ],
 }
 */
 ```
@@ -52,16 +52,16 @@ const snap = getSnapPositions( scrollingElement );
 
 /*
 {
-	x: {
-		start: [ 0, 100 ],
-		center: [ 300 ],
-		end: [ 500 ],
-	},
-	y: {
-		start: [ 0 ],
-		center: [ 250, 500, 750 ],
-		end: [ 1000 ],
-	},
+  x: {
+    start: [ 0, 100 ],
+    center: [ 300 ],
+    end: [ 500 ],
+  },
+  y: {
+    start: [ 0 ],
+    center: [ 250, 500, 750 ],
+    end: [ 1000 ],
+  },
 }
 */
 ```
