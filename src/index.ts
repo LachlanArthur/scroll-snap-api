@@ -205,7 +205,7 @@ export function getScrollSnapPositions( element: HTMLElement ): Record<Axis, num
     y: element.scrollHeight - element.offsetHeight,
   };
 
-  const filterMax = ( max: number ) => ( pos: number ) => pos >= 0 && pos <= max;
+  const clamp = ( min: number, max: number ) => ( value: number ) => Math.max( min, Math.min( max, value ) );
 
   return {
 
@@ -214,14 +214,14 @@ export function getScrollSnapPositions( element: HTMLElement ): Record<Axis, num
       ...snapPositions.x.center.map( v => v - ( rect.width / 2 ) ),
       ...snapPositions.x.end.map( v => v - rect.width + scrollPadding.x.after ),
     ]
-      .filter( filterMax( maxScroll.x ) ),
+      .map( clamp( 0, maxScroll.x ) ),
 
     y: [
       ...snapPositions.y.start.map( v => v - scrollPadding.y.before ),
       ...snapPositions.y.center.map( v => v - ( rect.height / 2 ) ),
       ...snapPositions.y.end.map( v => v - rect.height + scrollPadding.y.after ),
     ]
-      .filter( filterMax( maxScroll.y ) ),
+      .map( clamp( 0, maxScroll.y ) ),
 
   };
 
