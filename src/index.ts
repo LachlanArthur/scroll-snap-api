@@ -209,20 +209,24 @@ export function getScrollSnapPositions( element: HTMLElement ): Record<Axis, num
 
   return {
 
-    x: [
+    x: unique( [
       ...snapPositions.x.start.map( v => v - scrollPadding.x.before ),
       ...snapPositions.x.center.map( v => v - ( rect.width / 2 ) ),
       ...snapPositions.x.end.map( v => v - rect.width + scrollPadding.x.after ),
     ]
-      .map( clamp( 0, maxScroll.x ) ),
+      .map( clamp( 0, maxScroll.x ) ) ),
 
-    y: [
+    y: unique( [
       ...snapPositions.y.start.map( v => v - scrollPadding.y.before ),
       ...snapPositions.y.center.map( v => v - ( rect.height / 2 ) ),
       ...snapPositions.y.end.map( v => v - rect.height + scrollPadding.y.after ),
     ]
-      .map( clamp( 0, maxScroll.y ) ),
+      .map( clamp( 0, maxScroll.y ) ) ),
 
   };
 
+}
+
+function unique<T>( iterable: Iterable<T> ): T[] {
+  return Array.from( new Set( iterable ) );
 }
