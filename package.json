@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Interact with CSS scroll-snap",
   "scripts": {
-    "build": "pack build"
+    "build": "pika build"
   },
   "repository": {
     "type": "git",
