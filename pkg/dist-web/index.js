@@ -149,21 +149,24 @@ function getScrollSnapPositions(element) {
         x: element.scrollWidth - element.offsetWidth,
         y: element.scrollHeight - element.offsetHeight,
     };
-    const filterMax = (max) => (pos) => pos >= 0 && pos <= max;
+    const clamp = (min, max) => (value) => Math.max(min, Math.min(max, value));
     return {
-        x: [
+        x: unique([
             ...snapPositions.x.start.map(v => v - scrollPadding.x.before),
             ...snapPositions.x.center.map(v => v - (rect.width / 2)),
             ...snapPositions.x.end.map(v => v - rect.width + scrollPadding.x.after),
         ]
-            .filter(filterMax(maxScroll.x)),
-        y: [
+            .map(clamp(0, maxScroll.x))),
+        y: unique([
             ...snapPositions.y.start.map(v => v - scrollPadding.y.before),
             ...snapPositions.y.center.map(v => v - (rect.height / 2)),
             ...snapPositions.y.end.map(v => v - rect.height + scrollPadding.y.after),
         ]
-            .filter(filterMax(maxScroll.y)),
+            .map(clamp(0, maxScroll.y))),
     };
+}
+function unique(iterable) {
+    return Array.from(new Set(iterable));
 }
 
 export { getScrollPadding, getScrollSnapPositions, getSnapPositions, scrollSnapToNext };
