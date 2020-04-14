@@ -1,0 +1,33 @@
+{
+  "name": "scroll-snap-api",
+  "description": "Interact with CSS scroll-snap",
+  "version": "1.0.0",
+  "license": "MIT",
+  "source": "dist-src/index.js",
+  "types": "dist-types/index.d.ts",
+  "main": "dist-node/index.js",
+  "module": "dist-web/index.js",
+  "pika": true,
+  "sideEffects": false,
+  "files": [
+    "dist-*/",
+    "assets/",
+    "bin/"
+  ],
+  "homepage": "https://github.com/LachlanArthur/ScrollSnap#readme",
+  "bugs": {
+    "url": "https://github.com/LachlanArthur/ScrollSnap/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LachlanArthur/ScrollSnap.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.9.2",
+    "@pika/plugin-build-web": "^0.9.2",
+    "@pika/plugin-ts-standard-pkg": "^0.9.2",
+    "typescript": "^3.8.3"
+  }
+}
