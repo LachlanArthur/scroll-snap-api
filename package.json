@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LachlanArthur/ScrollSnap.git"
+    "url": "git+https://github.com/LachlanArthur/scroll-snap-api.git"
   },
   "author": "lachlanarthur@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LachlanArthur/ScrollSnap/issues"
+    "url": "https://github.com/LachlanArthur/scroll-snap-api/issues"
   },
-  "homepage": "https://github.com/LachlanArthur/ScrollSnap#readme",
+  "homepage": "https://github.com/LachlanArthur/scroll-snap-api#readme",
   "@pika/pack": {
     "pipeline": [
       [
