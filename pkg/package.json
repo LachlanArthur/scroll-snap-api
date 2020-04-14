@@ -9,13 +9,13 @@
   ],
   "pika": true,
   "sideEffects": false,
-  "homepage": "https://github.com/LachlanArthur/ScrollSnap#readme",
+  "homepage": "https://github.com/LachlanArthur/scroll-snap-api#readme",
   "bugs": {
-    "url": "https://github.com/LachlanArthur/ScrollSnap/issues"
+    "url": "https://github.com/LachlanArthur/scroll-snap-api/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LachlanArthur/ScrollSnap.git"
+    "url": "git+https://github.com/LachlanArthur/scroll-snap-api.git"
   },
   "dependencies": {},
   "devDependencies": {
