@@ -2,11 +2,9 @@ export type Axis = 'x' | 'y';
 
 export type ScrollDirection = 'left' | 'right' | 'up' | 'down';
 
-export type ScrollSnapAlignment = 'start' | 'end' | 'center';
+export type ScrollSnapAlignment = 'start' | 'end' | 'center' | 'none';
 
-export type ScrollSnapAlignValue = 'none' | ScrollSnapAlignment;
-
-export type SnapPositionList = Record<ScrollSnapAlignment, number[]>;
+export type SnapPositionList = Record<Exclude<ScrollSnapAlignment, 'none'>, number[]>;
 
 export function scrollSnapToNext( element: HTMLElement, direction: ScrollDirection, scrollToOptions: ScrollToOptions = { behavior: 'smooth' } ) {
 
@@ -158,7 +156,7 @@ export function getSnapPositions( parent: HTMLElement, excludeOffAxis = true ): 
 
       const childStyle = window.getComputedStyle( child );
 
-      let [ childAlignY, childAlignX ] = childStyle.getPropertyValue( 'scroll-snap-align' ).split( ' ' ) as ScrollSnapAlignValue[];
+      let [ childAlignY, childAlignX ] = childStyle.getPropertyValue( 'scroll-snap-align' ).split( ' ' ) as ScrollSnapAlignment[];
       if ( typeof childAlignX === 'undefined' ) {
         childAlignX = childAlignY;
       }
