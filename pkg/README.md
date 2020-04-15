@@ -2,6 +2,10 @@
 
 Interact with [CSS scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap).
 
+Zero dependencies.
+
+Automatically accounts for `scroll-padding`.
+
 ## Install
 
 ```shell
@@ -10,7 +14,7 @@ yarn add scroll-snap-api
 npm install --save scroll-snap-api
 ```
 
-Or import directly
+Or use directly
 
 ```js
 import * as scrollSnapApi from 'https://cdn.pika.dev/scroll-snap-api';
