@@ -75,5 +75,4 @@ const snap = getSnapPositions( scrollingElement );
 ## TODO
 
 - More documentation
-- Pass scroll behaviour args
 - Support `dir="rtl"`
