@@ -1,6 +1,6 @@
 # scroll-snap-api
 
-Interact with [CSS scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap).
+JavaScript API for interacting with [CSS scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap).
 
 Zero dependencies.
 
