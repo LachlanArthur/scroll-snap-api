@@ -141,11 +141,12 @@ export function getSnapPositions( parent: HTMLElement, excludeOffAxis = true ): 
 
   const descendants = getAllDescendants( parent );
 
-  ( [ 'x', 'y' ] as Axis[] ).forEach( axis => {
+  for ( const axis of [ 'x', 'y' ] as Axis[] ) {
 
     const orthogonalAxis = axis === 'x' ? 'y' : 'x';
-    const offsetStart = axis === 'x' ? 'offsetLeft' : 'offsetTop';
-    const offsetSize = axis === 'x' ? 'offsetWidth' : 'offsetHeight';
+    const axisStart = axis === 'x' ? 'left' : 'top';
+    const axisSize = axis === 'x' ? 'width' : 'height';
+    const axisScroll = axis === 'x' ? 'scrollLeft' : 'scrollTop';
 
     for ( const child of descendants ) {
 
@@ -162,6 +163,7 @@ export function getSnapPositions( parent: HTMLElement, excludeOffAxis = true ): 
       }
 
       const childAlign = axis === 'x' ? childAlignX : childAlignY;
+      const childOffsetStart = childRect[ axisStart ] - parentRect[ axisStart ] + parent[ axisScroll ];
 
       switch ( childAlign ) {
 
@@ -169,22 +171,22 @@ export function getSnapPositions( parent: HTMLElement, excludeOffAxis = true ): 
           break;
 
         case 'start':
-          positions[ axis ].start.push( child[ offsetStart ] );
+          positions[ axis ].start.push( childOffsetStart );
           break;
 
         case 'center':
-          positions[ axis ].center.push( child[ offsetStart ] + ( child[ offsetSize ] / 2 ) );
+          positions[ axis ].center.push( childOffsetStart + ( childRect[ axisSize ] / 2 ) );
           break;
 
         case 'end':
-          positions[ axis ].end.push( child[ offsetStart ] + child[ offsetSize ] );
+          positions[ axis ].end.push( childOffsetStart + childRect[ axisSize ] );
           break;
 
       }
 
     }
 
-  } );
+  }
 
   return positions;
 
