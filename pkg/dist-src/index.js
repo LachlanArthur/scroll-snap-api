@@ -109,10 +109,11 @@ export function getSnapPositions(parent, excludeOffAxis = true) {
         },
     };
     const descendants = getAllDescendants(parent);
-    ['x', 'y'].forEach(axis => {
+    for (const axis of ['x', 'y']) {
         const orthogonalAxis = axis === 'x' ? 'y' : 'x';
-        const offsetStart = axis === 'x' ? 'offsetLeft' : 'offsetTop';
-        const offsetSize = axis === 'x' ? 'offsetWidth' : 'offsetHeight';
+        const axisStart = axis === 'x' ? 'left' : 'top';
+        const axisSize = axis === 'x' ? 'width' : 'height';
+        const axisScroll = axis === 'x' ? 'scrollLeft' : 'scrollTop';
         for (const child of descendants) {
             const childRect = child.getBoundingClientRect();
             // Skip child if it doesn't intersect the parent's opposite axis (it can never be in view)
@@ -125,21 +126,22 @@ export function getSnapPositions(parent, excludeOffAxis = true) {
                 childAlignX = childAlignY;
             }
             const childAlign = axis === 'x' ? childAlignX : childAlignY;
+            const childOffsetStart = childRect[axisStart] - parentRect[axisStart] + parent[axisScroll];
             switch (childAlign) {
                 case 'none':
                     break;
                 case 'start':
-                    positions[axis].start.push(child[offsetStart]);
+                    positions[axis].start.push(childOffsetStart);
                     break;
                 case 'center':
-                    positions[axis].center.push(child[offsetStart] + (child[offsetSize] / 2));
+                    positions[axis].center.push(childOffsetStart + (childRect[axisSize] / 2));
                     break;
                 case 'end':
-                    positions[axis].end.push(child[offsetStart] + child[offsetSize]);
+                    positions[axis].end.push(childOffsetStart + childRect[axisSize]);
                     break;
             }
         }
-    });
+    }
     return positions;
 }
 export function getScrollSnapPositions(element) {
